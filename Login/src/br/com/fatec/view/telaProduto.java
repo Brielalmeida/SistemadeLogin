@@ -5,7 +5,7 @@
 package br.com.fatec.view;
 
 import br.com.fatec.model.Persistencia;
-import br.com.fatec.model.Usuario;
+import br.com.fatec.model.Produto;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -14,12 +14,12 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author dti
  */
-public class TelaCadastro extends javax.swing.JFrame {
+public class telaProduto extends javax.swing.JFrame {
 
     /**
-     * Creates new form TelaCadastro
+     * Creates new form telaProduto
      */
-    public TelaCadastro() {
+    public telaProduto() {
         initComponents();
     }
 
@@ -37,55 +37,49 @@ public class TelaCadastro extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        txtID = new javax.swing.JTextField();
+        jTextField1 = new javax.swing.JTextField();
         txtNome = new javax.swing.JTextField();
-        txtLogin = new javax.swing.JTextField();
-        txtSenha = new javax.swing.JTextField();
-        btCadastrar = new javax.swing.JButton();
+        txtFornecedor = new javax.swing.JTextField();
         btSair = new javax.swing.JButton();
+        btCadastrar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
-        btListar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tableListar = new javax.swing.JTable();
+        tableProduto = new javax.swing.JTable();
+        btListar = new javax.swing.JButton();
+        btGerarArquivo = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(204, 255, 204));
+        jPanel1.setBackground(new java.awt.Color(153, 153, 255));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel1.setText("Nome:");
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        jLabel1.setText("Produtos");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel2.setText("Login:");
+        jLabel2.setText("Código:");
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel3.setText("Senha:");
+        jLabel3.setText("Nome:");
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel4.setText("ID:");
+        jLabel4.setText("Fornecedor");
 
-        txtID.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        txtID.setText("Não preencher");
-        txtID.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        txtID.setEnabled(false);
+        jTextField1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jTextField1.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        jTextField1.setText("Não preencher");
+        jTextField1.setEnabled(false);
 
         txtNome.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-
-        txtLogin.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-
-        txtSenha.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        txtSenha.addActionListener(new java.awt.event.ActionListener() {
+        txtNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSenhaActionPerformed(evt);
+                txtNomeActionPerformed(evt);
             }
         });
 
-        btCadastrar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        btCadastrar.setText("Cadastrar");
-        btCadastrar.addActionListener(new java.awt.event.ActionListener() {
+        txtFornecedor.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txtFornecedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btCadastrarActionPerformed(evt);
+                txtFornecedorActionPerformed(evt);
             }
         });
 
@@ -97,61 +91,73 @@ public class TelaCadastro extends javax.swing.JFrame {
             }
         });
 
+        btCadastrar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btCadastrar.setText("Cadastrar");
+        btCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btCadastrarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(38, 38, 38)
+                .addGap(89, 89, 89)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel4)
                     .addComponent(jLabel2)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel3))
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel4))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtSenha)
-                    .addComponent(txtLogin)
+                    .addComponent(jLabel1)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
                     .addComponent(txtNome)
-                    .addComponent(txtID, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE))
-                .addContainerGap(232, Short.MAX_VALUE))
+                    .addComponent(txtFornecedor))
+                .addContainerGap(114, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btSair, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btCadastrar))
-                .addGap(43, 43, 43))
+                    .addComponent(btCadastrar)
+                    .addComponent(btSair))
+                .addGap(49, 49, 49))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(78, 78, 78)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
-                .addGap(31, 31, 31)
+                .addGap(32, 32, 32)
+                .addComponent(jLabel1)
+                .addGap(105, 105, 105)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
+                    .addComponent(jLabel2)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(39, 39, 39)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addGap(33, 33, 33)
+                    .addComponent(jLabel3)
+                    .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(38, 38, 38)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addGap(18, 18, 18)
+                    .addComponent(jLabel4)
+                    .addComponent(txtFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(35, 35, 35)
                 .addComponent(btCadastrar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btSair)
-                .addGap(34, 34, 34))
+                .addGap(21, 21, 21))
         );
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 153));
+        jPanel2.setBackground(new java.awt.Color(255, 153, 153));
 
-        jButton2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jButton2.setText("Gerar arquivo");
+        tableProduto.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nome", "Fornecedor"
+            }
+        ));
+        jScrollPane1.setViewportView(tableProduto);
 
         btListar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btListar.setText("Listar");
@@ -161,41 +167,34 @@ public class TelaCadastro extends javax.swing.JFrame {
             }
         });
 
-        tableListar.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Nome", "Login", "Senha"
-            }
-        ));
-        jScrollPane1.setViewportView(tableListar);
+        btGerarArquivo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btGerarArquivo.setText("Gerar arquivo");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(34, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btListar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2)
+                .addComponent(btGerarArquivo)
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(22, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 574, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(23, 23, 23)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 641, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 629, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(btListar))
-                .addGap(28, 28, 28))
+                    .addComponent(btListar)
+                    .addComponent(btGerarArquivo))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -205,64 +204,66 @@ public class TelaCadastro extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btListarActionPerformed
+        // TODO add your handling code here:
+        ArrayList<Produto> listaProdutosCadastrados = new ArrayList<Produto>();
+        listaProdutosCadastrados = Persistencia.getListaProd();
+        DefaultTableModel tabelaModeloProduto = (DefaultTableModel)tableProduto.getModel();
+        
+        if (tabelaModeloProduto.getRowCount() > 0) {
+            for (int i = tabelaModeloProduto.getRowCount() - 1; i > -1; i--) {
+                tabelaModeloProduto.removeRow(i);
+            }
+           }
+        for (Produto prod : listaProdutosCadastrados) {
+            Object[] linha={prod.getNome(),prod.getFornecedor()};
+            tabelaModeloProduto.addRow(linha);
+        }
+    }//GEN-LAST:event_btListarActionPerformed
+
+    private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNomeActionPerformed
+
+    private void txtFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFornecedorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFornecedorActionPerformed
+
     private void btCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadastrarActionPerformed
         String nome = txtNome.getText();
-        String login = txtLogin.getText();
-        String senha = txtSenha.getText();
+        String fornecedor = txtFornecedor.getText();
         
-        if(Persistencia.lista.add(new Usuario(nome,login,senha))) {
+        if(Persistencia.listaProduto.add(new Produto(nome, fornecedor))) {
             JOptionPane.showMessageDialog(null, "Cadastrado");
         } else {
             JOptionPane.showMessageDialog(null, "Erro no cadastro");
         }
         
         txtNome.setText("");
-        txtLogin.setText("");
-        txtSenha.setText("");
+        txtFornecedor.setText("");
     }//GEN-LAST:event_btCadastrarActionPerformed
-
-    private void btListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btListarActionPerformed
-        // TODO add your handling code here
-        ArrayList<Usuario> listaUsuariosCadastrados = new ArrayList<Usuario>();
-        listaUsuariosCadastrados= Persistencia.getLista();
-        DefaultTableModel tabelaModelo= (DefaultTableModel)tableListar.getModel();
-        
-        if (tabelaModelo.getRowCount() > 0) {
-            for (int i = tabelaModelo.getRowCount() - 1; i > -1; i--) {
-                tabelaModelo.removeRow(i);
-            }
-           }
-        for (Usuario user : listaUsuariosCadastrados) {
-            Object[] linha={user.getNome(),user.getLogin(),user.getSenha()};
-            tabelaModelo.addRow(linha);
-        }
-    }//GEN-LAST:event_btListarActionPerformed
 
     private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
         // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_btSairActionPerformed
-
-    private void txtSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSenhaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtSenhaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -281,29 +282,29 @@ public class TelaCadastro extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(telaProduto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(telaProduto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(telaProduto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(telaProduto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaCadastro().setVisible(true);
+                new telaProduto().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btCadastrar;
+    private javax.swing.JButton btGerarArquivo;
     private javax.swing.JButton btListar;
     private javax.swing.JButton btSair;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -311,10 +312,9 @@ public class TelaCadastro extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tableListar;
-    private javax.swing.JTextField txtID;
-    private javax.swing.JTextField txtLogin;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTable tableProduto;
+    private javax.swing.JTextField txtFornecedor;
     private javax.swing.JTextField txtNome;
-    private javax.swing.JTextField txtSenha;
     // End of variables declaration//GEN-END:variables
 }
