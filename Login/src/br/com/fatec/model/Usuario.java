@@ -19,10 +19,7 @@ public class Usuario {
         this.senha = senha;
     }
 
-    @Override
-    public String toString() {
-        return "\nID: " + id +" | Nome: " +nome+ " | Login: " + login + " | Senha: " + senha;
-    }
+    
 
     public long getId() {
         return id;
@@ -54,6 +51,11 @@ public class Usuario {
 
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+    
+    @Override
+    public String toString() {
+        return "\n ID: " + id +" Nome: " +nome+ " Login: " + login + " Senha: " + senha;
     }
     
 }

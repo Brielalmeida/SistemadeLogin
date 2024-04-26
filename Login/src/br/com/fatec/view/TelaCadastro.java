@@ -43,6 +43,8 @@ public class TelaCadastro extends javax.swing.JFrame {
         txtSenha = new javax.swing.JTextField();
         btCadastrar = new javax.swing.JButton();
         btSair = new javax.swing.JButton();
+        btImportar = new javax.swing.JButton();
+        btExportar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
         btListar = new javax.swing.JButton();
@@ -97,30 +99,51 @@ public class TelaCadastro extends javax.swing.JFrame {
             }
         });
 
+        btImportar.setText("Importar");
+        btImportar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btImportarActionPerformed(evt);
+            }
+        });
+
+        btExportar.setText("Exportar");
+        btExportar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btExportarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel3))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtSenha)
-                    .addComponent(txtLogin)
-                    .addComponent(txtNome)
-                    .addComponent(txtID, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE))
-                .addContainerGap(232, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btSair, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btCadastrar))
                 .addGap(43, 43, 43))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(38, 38, 38)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel3))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtSenha)
+                            .addComponent(txtLogin)
+                            .addComponent(txtNome)
+                            .addComponent(txtID, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(97, 97, 97)
+                        .addComponent(btImportar)
+                        .addGap(33, 33, 33)
+                        .addComponent(btExportar)))
+                .addContainerGap(232, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -143,6 +166,10 @@ public class TelaCadastro extends javax.swing.JFrame {
                     .addComponent(jLabel3))
                 .addGap(18, 18, 18)
                 .addComponent(btCadastrar)
+                .addGap(108, 108, 108)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btImportar)
+                    .addComponent(btExportar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btSair)
                 .addGap(34, 34, 34))
@@ -264,6 +291,21 @@ public class TelaCadastro extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtSenhaActionPerformed
 
+    private void btImportarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btImportarActionPerformed
+        String relatorio = "C:\\Users\\dti\\Desktop\\SistemadeLogin\\Login\\src\\br\\com\\fatec\\model/relatorio.txt";
+        Persistencia.importar(relatorio);
+    }//GEN-LAST:event_btImportarActionPerformed
+
+    private void btExportarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExportarActionPerformed
+        try{
+        String relatorio = "C:\\Users\\dti\\Desktop\\SistemadeLogin\\Login\\src\\br\\com\\fatec\\model/relatorio.txt";
+        Persistencia.exportar(relatorio);
+        JOptionPane.showMessageDialog(null, "exportado com sucesso");
+        } catch(Exception e){
+            JOptionPane.showMessageDialog(null, "falha ao exportar: "+e);
+        }
+    }//GEN-LAST:event_btExportarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -301,6 +343,8 @@ public class TelaCadastro extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btCadastrar;
+    private javax.swing.JButton btExportar;
+    private javax.swing.JButton btImportar;
     private javax.swing.JButton btListar;
     private javax.swing.JButton btSair;
     private javax.swing.JButton jButton2;

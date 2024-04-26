@@ -4,6 +4,11 @@
  */
 package br.com.fatec.model;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 public class Persistencia {
@@ -42,6 +47,38 @@ public class Persistencia {
         
     }
     
-    /*Excluir alterar e listar*/
+    public static void importar(String arquivo){
+        String id, nome, login, senha;
+        try{
+            FileReader arq = new FileReader(arquivo);
+            BufferedReader lerArq = new BufferedReader(arq);
+            id = lerArq.readLine();
+            while(id != null){
+                
+                nome = lerArq.readLine();
+                login = lerArq.readLine();
+                senha = lerArq.readLine();
+                lista.add(new Usuario(nome, login, senha));
+            }
+            
+            arq.close();
+        } catch (IOException e){
+            System.err.printf("Erro ao abrir aqrquivo: %s", e.getMessage());
+        }
+    }
+    
+    public static void exportar(String nomeArquivo) throws IOException {
+        try {
+            FileWriter arq = new FileWriter(nomeArquivo);
+            PrintWriter gravarArq = new PrintWriter(arq);
+            for (Usuario user : lista) {
+                gravarArq.print(arq.toString());
+            }
+            gravarArq.close();
+            
+        } catch (IOException e){
+            System.err.printf("Erro ao gravar aqrquivo: %s", e.getMessage());
+        }
+    }
     
 }
